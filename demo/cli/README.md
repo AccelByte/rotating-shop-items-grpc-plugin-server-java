@@ -1,6 +1,6 @@
 # Platform Service's Rotating Shop Items Plugin gRPC Demo App
 
-A CLI demo app to prepare required data and execute Rotating Shop Items Plugin gRPC for Platform Service.
+A CLI demo app to prepare required data and execute Rotating Shop Items Plugin gRPC for AGS's Platform Service.
 
 ## Prerequsites
 
@@ -36,7 +36,7 @@ export AB_PASSWORD='PASSWORD'
 ```
 If these variables aren't provided, you'll need to supply the required values via command line arguments.
 
-Also, you will need `Rotating Shop Items Plugin gRPC` server already deployed and accessible.
+Also, you will need `Rotating Shop Items Plugin gRPC` server already deployed and accessible. If you want to use your local development environment, you can use tunneling service like `ngrok` to tunnel your grpc server port so it can be accessed by AGS.
 > Current AGS deployment does not support mTLS and authorization for custom grpc plugin. Make sure you disable mTls and authorization in your deployed Grpc server.
 
 ### Executable
