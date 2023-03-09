@@ -307,7 +307,29 @@ public class PlatformDataUnit {
             publishStoreChange();
     }
 
-    public void disableCustomRotationForSection(String sectionId, boolean doPublish) throws Exception {
+    public void enableFixedRotationWithCustomBackfillForSection(String sectionId, boolean doPublish) throws Exception {
+        if (storeId.equals(""))
+            throw new Exception("No store id stored.");
+
+        Section sectionWrapper = new Section(abSdk);
+        sectionWrapper.updateSection(UpdateSection.builder()
+                .namespace(abNamespace)
+                .storeId(storeId)
+                .sectionId(sectionId)
+                .body(SectionUpdate.builder()
+                        .rotationTypeFromEnum(SectionUpdate.RotationType.FIXEDPERIOD)
+                        .fixedPeriodRotationConfig(FixedPeriodRotationConfig.builder()
+                                .backfillTypeFromEnum(FixedPeriodRotationConfig.BackfillType.CUSTOM)
+                                .ruleFromEnum(FixedPeriodRotationConfig.Rule.SEQUENCE)
+                                .build())
+                        .build())
+                .build());
+
+        if (doPublish)
+            publishStoreChange();
+    }
+
+    public void disableCustomFunctionForSection(String sectionId, boolean doPublish) throws Exception {
         if (storeId.equals(""))
             throw new Exception("No store id stored.");
 

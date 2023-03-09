@@ -36,6 +36,9 @@ public class AppConfigRepository extends DefaultConfigRepository {
     @Parameters(index = "0", paramLabel = "GRPC_TARGET", description = "Grpc plugin target server url.")
     private String grpcServerUrl;
 
+    @Parameters(index = "1", paramLabel = "RUN_MODE", description = "Demo run mode, either rotation or backfill.")
+    private String runMode;
+
     @Override
     public String getClientId() {
         if (!abClientId.equals(""))
@@ -104,5 +107,9 @@ public class AppConfigRepository extends DefaultConfigRepository {
             return "/customitemrotationtest";
         else
             return  "/" + platformCategoryPath.trim();
+    }
+
+    public String getRunMode() {
+        return runMode.toLowerCase();
     }
 }

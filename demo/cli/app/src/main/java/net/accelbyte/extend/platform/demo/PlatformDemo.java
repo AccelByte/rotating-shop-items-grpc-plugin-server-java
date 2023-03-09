@@ -88,9 +88,16 @@ public class PlatformDemo implements Callable<Integer> {
                 System.out.println("[OK]");
                 sInfo.WriteIntoToConsole();
 
-                System.out.print("Enabling custom rotation for section...");
-                pdu.enableCustomRotationForSection(sInfo.getId(),true);
-                System.out.println("[OK]");
+                final String runMode = configRepo.getRunMode();
+                if (runMode.equals("backfill")) {
+                    System.out.print("Enabling custom backfill for section...");
+                    pdu.enableFixedRotationWithCustomBackfillForSection(sInfo.getId(),true);
+                    System.out.println("[OK]");
+                } else {
+                    System.out.print("Enabling custom rotation for section...");
+                    pdu.enableCustomRotationForSection(sInfo.getId(),true);
+                    System.out.println("[OK]");
+                }
 
                 System.out.print("Getting active sections's rotation items...");
                 List<SimpleSectionInfo> aSections = pdu.getSectionRotationItems(userInfo.getUserId());
