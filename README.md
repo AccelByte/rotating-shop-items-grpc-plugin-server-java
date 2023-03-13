@@ -1,12 +1,12 @@
 # rotating-shop-items-grpc-plugin-server-java
 
-This repository contains `gRPC server` sample app (Java) for AccelByte Cloud service `rotating shop items` customization.
+This repository contains `gRPC server` sample app (Java) for AccelByte Gaming Services service `rotating shop items` customization.
 
-The `gRPC server` is a part of AccelByte Cloud service customization gRPC plugin architecture.
+The `gRPC server` is a part of AccelByte Gaming Services service customization gRPC plugin architecture.
 
 ```mermaid
 flowchart LR
-   subgraph AB Cloud Service
+   subgraph AB Gaming Services Service
    CL[gRPC Client]
    end
    subgraph External Hosting
@@ -17,7 +17,7 @@ flowchart LR
    DS --- SV
 ```
 
-> :warning: **If you are new to AccelByte Cloud service customization gRPC plugin architecture**: You may want to read `OVERVIEW.md` in the `grpc-plugin-dependencies` repository to get the overview of the architecture.
+> :warning: **If you are new to AccelByte Gaming Services service customization gRPC plugin architecture**: You may want to read `OVERVIEW.md` in the `grpc-plugin-dependencies` repository to get the overview of the architecture.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ flowchart LR
 
     e. jdk 17
 
-2. AccelByte Cloud demo environment.
+2. AccelByte Gaming Services demo environment.
 
     a. Base URL: https://demo.accelbyte.io.
 
@@ -99,7 +99,7 @@ The functionality of `gRPC server` methods can be tested in local development en
 
 2. Make sure this sample `gRPC server` is also up and running.
 
-3. Run the corresponding `gRPC client` as a stand in for the actual `gRPC client` in AccelByte Cloud, for example `rotating-shop-items-grpc-plugin-client-go`.
+3. Run the corresponding `gRPC client` as a stand in for the actual `gRPC client` in AccelByte Gaming Services, for example `rotating-shop-items-grpc-plugin-client-go`.
 
    a. Clone `rotating-shop-items-grpc-plugin-client-go` repository. 
 
