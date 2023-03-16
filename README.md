@@ -109,23 +109,81 @@ docker-compose up --build
 
 ## Testing
 
-### Test Functionality in Local Development Environment
+### Functional Test in Local Development Environment
 
-The functionality of `gRPC server` methods can be tested in local development environment.
+The custom functions in this sample app can be tested locally using `postman`.
 
-1. Make sure `dependency services` are running. Please read `README.md` in the `grpc-plugin-dependencies` repository on how to run it.
+1. Start the `dependency services` by following the `README.md` in the [grpc-plugin-dependencies](https://github.com/AccelByte/grpc-plugin-dependencies) repository.
 
-2. Make sure this sample `gRPC server` is also up and running.
+   > :warning: **Make sure to start dependency services with mTLS disabled for now**: It is currently not supported by AccelByte Gaming Services but it will be enabled later on to improve security. If it is enabled, the gRPC client calls without mTLS will be rejected by Envoy proxy.
 
-3. Run the corresponding `gRPC client` as a stand in for the actual `gRPC client` in AccelByte Gaming Services, for example `rotating-shop-items-grpc-plugin-client-go`.
+2. Start this `gRPC server` sample app.
 
-   a. Clone `rotating-shop-items-grpc-plugin-client-go` repository. 
+3. Open `postman`, create a new `gRPC request`, and enter `localhost:10000` as server URL. 
 
-   b. Follow the `README.md` inside to setup, build, and run it.
+   > :exclamation: We are essentially accessing the `gRPC server` through an `Envoy` proxy which is a part of `dependency services`.
 
-   c. Try it out! See the instruction in `README.md`.
+4. Still in `postman`, continue by selecting `Section/GetRotationItems` method and invoke it with the sample message below.
 
-> :exclamation: **Sample `gRPC server` and `gRPC client` does not have to be implemented in the same programming language**: As long as the gRPC proto is compatible, they should be able to communicate with each other.
+   ```json
+   {
+      "namespace": "accelbyte",
+      "userId": "c6354ec948604a1c9f5c026795e420d9",
+      "sectionObject": {        
+         "items": [
+            {
+                  "itemId": "7fcad276c5df4128b3f38564abd012c4",
+                  "itemSku": "S1"
+            },
+            {
+                  "itemId": "59ab1f45979e460295178deb609ec5d6",
+                  "itemSku": "S2"
+            },
+            {
+                  "itemId": "e51ae70222af4fba96ba8d7f631b8407",
+                  "itemSku": "S3"
+            },
+            {
+                  "itemId": "f790c28a58734212b594b0a161ffb297",
+                  "itemSku": "S4"
+            },
+            {
+                  "itemId": "f0f745e8dac14614a0c30470438ecfed",
+                  "itemSku": "S5"
+            },
+            {
+                  "itemId": "365ef7d7624b4f23b5d815ad1fd2f7cc",
+                  "itemSku": "S6"
+            },
+            {
+                  "itemId": "ce6d664c2c7f4c0fb488663814a33176",
+                  "itemSku": "S7"
+            },
+            {
+                  "itemId": "37eb332bf8e748f2a12f6ba19b4018df",
+                  "itemSku": "S8"
+            }            
+         ],
+         "sectionId": "c4d737f6f42c423e8690ff705ab75d9f",
+         "sectionName": "example",
+         "startDate": "1672519500",
+         "endDate": "1675197900"
+      }    
+   }
+   ```
+
+5. If successful, you will see the item(s) in the response.
+
+   ```json
+   {
+      "items": [
+         {
+            "itemId": "f0f745e8dac14614a0c30470438ecfed",
+            "itemSku": "S5"
+         }
+      ]
+   }
+   ```
 
 ### Test Functionality using CLI Demo App
 
