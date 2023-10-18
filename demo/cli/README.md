@@ -74,19 +74,23 @@ app/target/graal/platformGrpcDemo
 ```
 
 ### Example
-CLI demo app requires 2 parameters. first is the grpc server url, and second is run mode. For run mode, only two availables: `rotation` and `backfill`. `rotation` mode will call custom rotation item function in grpc server, and `backfill` mode will call custom backfill function.
+CLI demo app requires 1 parameters. The parameter is for run mode. For run mode, only two availables: `rotation` and `backfill`. `rotation` mode will call custom rotation item function in grpc server, and `backfill` mode will call custom backfill function.
 
 - Without any environment variables
 ```bash
-$ ./app/target/install/app/bin/app -b='https://demo.accelbyte.io' -c='CLIENT-ID-VALUE' -s='CLIENT-SECRET-VALUE' -n='NAMESPACE-VALUE' -u='<USERNAME>' -p='<PASSWORD>' <GRPC_PLUGIN_SERVER_URL> <RUN_MODE>
+$ ./app/target/install/app/bin/app -b='https://demo.accelbyte.io' -c='CLIENT-ID-VALUE' -s='CLIENT-SECRET-VALUE' -n='NAMESPACE-VALUE' -u='<USERNAME>' -p='<PASSWORD>' -g='<GRPC_PLUGIN_SERVER_URL>' <RUN_MODE>
 ```
 - With basic environment variables setup
 ```bash
-$ ./app/target/install/app/bin/app -u='<USERNAME>' -p='<PASSWORD>' -n='<NAMESPACE-VALUE>' <GRPC_PLUGIN_SERVER_URL> <RUN_MODE>
+$ ./app/target/install/app/bin/app -u='<USERNAME>' -p='<PASSWORD>' -n='<NAMESPACE-VALUE>' -g='<GRPC_PLUGIN_SERVER_URL>' <RUN_MODE>
 ```
 - With all environment variables setup
 ```bash
-$ ./app/target/install/app/bin/app <GRPC_PLUGIN_SERVER_URL> <RUN_MODE>
+$ ./app/target/install/app/bin/app -g='<GRPC_PLUGIN_SERVER_URL>' <RUN_MODE>
+```
+- Use Extend App instead of grpc server url
+```bash
+$ ./app/target/install/app/bin/app -a='<EXTEND_APP_NAME>' <RUN_MODE>
 ```
 - Show usage help
 ```bash

@@ -68,7 +68,7 @@ public class PlatformDemo implements Callable<Integer> {
             PlatformDataUnit pdu = new PlatformDataUnit(abSdk,configRepo);
             try {
                 System.out.print("Configuring platform service grpc target... ");
-                pdu.setPlatformServiceGrpcTarget();
+                pdu.setPlatformServiceGrpcTargetForSection();
                 System.out.println("[OK]");
 
                 System.out.print("Creating store... ");
@@ -115,7 +115,7 @@ public class PlatformDemo implements Callable<Integer> {
                 pdu.deleteStore();
                 System.out.println("[OK]");
 
-                pdu.unsetPlatformServiceGrpcTarget();
+                pdu.unsetPlatformServiceGrpcTargetForSection();
             }
         } catch (Exception x) {
             System.out.println("There are some error(s). " + x.getMessage());
