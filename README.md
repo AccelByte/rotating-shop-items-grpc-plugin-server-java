@@ -254,7 +254,25 @@ public IP, we can use something like [ngrok](https://ngrok.com/).
 
 5. Create a user for testing. Keep the `Username` and `Password`.
 
-6.Refer to [Demo CLI](demo/cli/README.md) readme on how to use the demo cli app to test the service.
+6. In [demo/cli](demo/cli) folder, create an `.env` file by copying the content of [.env.template](demo/cli/.env.template) file and
+set the required environment variables as shown below. 
+
+   ```
+   AB_BASE_URL='https://demo.accelbyte.io'
+   AB_CLIENT_ID='xxxxxxxxxx'       # Use Client ID from the previous step
+   AB_CLIENT_SECRET='xxxxxxxxxx'   # Use Client secret from the previous step
+   AB_NAMESPACE='xxxxxxxxxx'       # Use your Namespace ID
+   AB_USERNAME='xxxxxxxxxx'        # Use your Namespace Username
+   AB_PASSWORD='xxxxxxxxxx'        # Use your Namespace Password
+   GRPC_SERVER_URL='0.tcp.ap.ngrok.io:xxxxx'   # Use your ngrok forwarding URL without `https://`
+   ```
+
+   Run the [Makefile](demo/cli/Makefile) commands to execute the CLI demo app.
+
+   ```
+   $ cd demo/cli
+   $ make run ENV_FILE_PATH=.env
+   ```
 
 > :warning: **Ngrok free plan has some limitations**: You may want to use paid plan if the traffic is high.
 

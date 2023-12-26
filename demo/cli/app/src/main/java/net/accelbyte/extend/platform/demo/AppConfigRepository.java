@@ -78,7 +78,7 @@ public class AppConfigRepository extends DefaultConfigRepository {
 
     public String getGrpcServerUrl() {
         if (grpcServerUrl.equals("")) {
-            grpcServerUrl = System.getenv("AB_GRPC_SERVER_URL");
+            grpcServerUrl = System.getenv("GRPC_SERVER_URL");
             if (grpcServerUrl == null)
                 grpcServerUrl = "";
         }
@@ -87,7 +87,7 @@ public class AppConfigRepository extends DefaultConfigRepository {
 
     public String getExtendAppName() {
         if (extendAppName.equals("")) {
-            extendAppName = System.getenv("AB_EXTEND_APP_NAME");
+            extendAppName = System.getenv("EXTEND_APP_NAME");
             if (extendAppName == null)
                 extendAppName = "";
         }
