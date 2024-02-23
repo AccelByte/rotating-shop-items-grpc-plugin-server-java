@@ -54,7 +54,6 @@ test_functional_accelbyte_hosted:
 		-e GRADLE_USER_HOME=.gradle \
 		-e DOCKER_CONFIG=/tmp/.docker \
 		-u $$(id -u):$$(id -g) \
-		--group-add $$(getent group docker | cut -d ':' -f 3) \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-v $$(pwd):/data \
 		-w /data rotating-shop-items-test-functional-java bash ./test/functional/test-accelbyte-hosted.sh

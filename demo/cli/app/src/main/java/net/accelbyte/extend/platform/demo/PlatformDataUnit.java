@@ -194,8 +194,8 @@ public class PlatformDataUnit {
             final List<RegionDataItemDTO> regionItem = new ArrayList<>();
             regionItem.add(RegionDataItemDTO.builder()
                     .currencyCode("USD")
-                    .currencyNamespace("accelbyte")
-                    .currencyTypeFromEnum(RegionDataItemDTO.CurrencyType.REAL)
+                    .currencyNamespace(abNamespace)
+                    .currencyTypeFromEnum(RegionDataItemDTO.CurrencyType.VIRTUAL)
                     .price((i + 1) * 2)
                     .build());
             iRegionData.put("US",regionItem);
